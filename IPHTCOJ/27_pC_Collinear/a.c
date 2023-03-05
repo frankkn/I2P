@@ -19,8 +19,8 @@ void cal_line(Pair p[], int n){
   bool connect[n][n];
   for(int i = 0; i < n; ++i){
     for(int j = 0; j < n; ++j){
-        connect[i][j] = false;
-      }
+      connect[i][j] = false;
+    }
   }
   
   int cnt = 0;
