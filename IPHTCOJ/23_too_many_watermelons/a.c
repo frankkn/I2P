@@ -3,23 +3,12 @@
 int main(){
 	int n;
   scanf("%d", &n);
-  int a[n], b[n];
-  for(int i = 0; i < n; ++i){
-    int cur_a;
-    scanf("%d", &cur_a);
-    a[i] = cur_a;
-  }
-  for(int i = 0; i < n; ++i){
-    int cur_b;
-    scanf("%d", &cur_b);
-    b[i] = cur_b;
-  }
+  int a[(int)2e5], b[(int)2e5];
+  for(int i = 0; i < n; ++i)  scanf("%d", &a[i]);
+  for(int i = 0; i < n; ++i)  scanf("%d", &b[i]);
   
   int p = 0;
-  int used[n+1];
-  for(int i = 0; i <= n; ++i){
-    used[i] = 0;
-  }
+  int used[(int)2e5] = {0}; // all init to 0, can only be initialized to 0
     
   for(int i = 0; i < n; ++i){
     int cur_wm = b[i];
