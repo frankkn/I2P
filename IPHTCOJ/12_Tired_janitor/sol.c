@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main(){
-	int n, q;
+  int n, q;
   scanf("%d%d", &n, &q);
   long long a[1000000];
   for(int i = 1; i <= n; ++i){
@@ -22,6 +22,6 @@ int main(){
     scanf("%d%d", &L, &R);
     printf("%lld\n", pre[R] - pre[L-1]);
   }
-  
+
 	return 0;
 }
