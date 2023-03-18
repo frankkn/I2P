@@ -3,3 +3,9 @@
 > Homework and Problem database for Introduction to Programming  
 > All codes are written in C.
 
+## Fun Problems
+
+|Problem No.|Solution           |
+|:---------:|:-----------------:|
+|4          |Dynamic Programming|
+|44         |Two pointers       |
