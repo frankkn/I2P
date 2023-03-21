@@ -24,7 +24,7 @@ int show_parenthesis(int n){
     printf("1");
     ans = 1;
   }else{
-    if(n%2==1)  printf("(");
+    if(n%2)  printf("(");
     ans = show_parenthesis(n-1);
     if(n%2){
       ans = ans * n;
