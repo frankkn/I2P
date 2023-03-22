@@ -11,5 +11,6 @@ Home page: [IPHTCOJ](http://140.114.85.195/)
 
 |Problem No.|Solution           |
 |:---------:|:-----------------:|
-|4          |Dynamic Programming|
+|4          |Dynamic programming|
 |44         |Two pointers       |
+|142        |Bit manipulation   |
