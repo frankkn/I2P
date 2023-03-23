@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+int arr[(int)1e6+1] = {0};
+int prefix[(int)1e6+1] = {0};
+
 int count(int i){
   int cnt = 0;
   while(i){
@@ -13,8 +16,7 @@ int main(){
   int t; 
   scanf("%d", &t);
 
-  int arr[(int)1e6+1];
-  int prefix[(int)1e6+1];
+
   prefix[0] = 0;
   for(int i = 1; i <= 1e6; ++i){
     arr[i] = count(i);
