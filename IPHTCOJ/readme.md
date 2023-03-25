@@ -14,3 +14,12 @@ Home page: [IPHTCOJ](http://140.114.85.195/)
 |4          |Dynamic programming|
 |44         |Two pointers       |
 |142        |Bit manipulation   |
+
+## Homework
+
+|Homework No.|Problem No.  |
+|:----------:|:-----------:|
+|1           |20, 26       |
+|2           |*16, 40, *141|
+|3           |12, 23       |
+|4           |29, 52, *142 |

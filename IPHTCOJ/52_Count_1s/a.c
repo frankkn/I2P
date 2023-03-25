@@ -16,7 +16,6 @@ int main(){
   int t; 
   scanf("%d", &t);
 
-
   prefix[0] = 0;
   for(int i = 1; i <= 1e6; ++i){
     arr[i] = count(i);
