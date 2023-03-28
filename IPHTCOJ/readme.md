@@ -12,6 +12,7 @@ Home page: [IPHTCOJ](http://140.114.85.195/)
 |Problem No.|Solution           |
 |:---------:|:-----------------:|
 |4          |Dynamic programming|
+|27         |Basic Math of slope|
 |42         |Partition          |
 |44         |Two pointers       |
 |142        |Bit manipulation   |

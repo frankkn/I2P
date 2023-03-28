@@ -15,7 +15,7 @@ int main(){
     for(int i = 0; i < n; ++i){
       scanf("%lld%lld", &x[i], &y[i]);
     }
-
+    // Intuition: Pick random 3 points check if they are on the same line
     for(int i = 0; i < n; ++i){
       for(int j = i+1; j < n; ++j){
         for(int k = j+1; k < n; ++k){
@@ -30,9 +30,7 @@ int main(){
             if(line[i][j] == 0 && line[i][k] == 0 && line[j][k] == 0){
               cnt++;
             }
-            line[i][j] = 1;
-            line[i][k] = 1;
-            line[j][k] = 1;
+            line[i][j] = line[i][k] = line[j][k] = 1; // 不能寫在if裡面，理由是一條線上，我最多只看三個點。
           }
         }
       }
