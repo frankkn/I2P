@@ -29,13 +29,19 @@ void change(int m, int i, int k){
   }else if(m == 0){
     show(k);
   }else{
+    // 不使用第i個coin
     change(m, i+1, k);
 
-    tmp = num[i];
+    // 用一個第i個coin
     num[i]++;
-    change(m - value[i], i, k);
-    // 我現在 還是有m元，我用的value[i]的銅板，只用了tmp個。
-    num[i] = tmp; // 因為global大家都可以改
+    change(m-value[i], i, k);
+    num[i]--;
+
+    // tmp = num[i];
+    // num[i]++;
+    // change(m - value[i], i, k);
+    // // 我現在 還是有m元，我用的value[i]的銅板，只用了tmp個。
+    // num[i] = tmp; // 因為global大家都可以改
   }
 }
 
