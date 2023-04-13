@@ -3,10 +3,10 @@ int a[20];
 int cnt;
 
 void dfs(int idx, int sum, int n, int k){
-    if(sum > k) return;
+  if(sum > k) return;
 	if(sum == k){
-    	cnt++;
-      return;
+    cnt++;
+    return;
   }else{
     for(int i = idx; i < n; ++i){
     sum += a[i];
