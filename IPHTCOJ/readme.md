@@ -15,6 +15,7 @@ Home page: [IPHTCOJ](http://140.114.85.195/)
 |27         |Basic Math of slope|
 |42         |Partition          |
 |44         |Two pointers       |
+|77         |String operations  |
 |142        |Bit manipulation   |
 
 ## Homework
