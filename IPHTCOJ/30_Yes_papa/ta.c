@@ -12,7 +12,7 @@ int dir_comp(int al, int ar, int bl, int br){
 
 int compare(int al, int ar, int bl, int br){
   //if((ar - al + 1) % 2) return dir_comp(al, ar, bl, br);
-  if((ar - al + 1) % 2) return !strncmp(a+al, b+bl, ar-al+1);
+  if((ar - al + 1) % 2) return !strncmp(a+al, b+bl, ar-al+1); // a+al !! not al
   int am = al + (ar-al) / 2;
   int bm = bl + (br-bl) / 2;
   // case 1
@@ -21,8 +21,7 @@ int compare(int al, int ar, int bl, int br){
   // case 2
   int s3 = compare(al, am, bm+1, br); // a1 vs b2
   int s4 = compare(am+1, ar, bl, bm); // a2 vs b1
-  if((s1 && s2) || (s3 && s4))  return 1;
-  else return 0;
+  return (s1 && s2) || (s3 && s4);
 }
 
 int main(){
