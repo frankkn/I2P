@@ -9,7 +9,7 @@ void dfs(int idx, int sum, int n, int k){
     return;
   }else{
     for(int i = idx; i < n; ++i){
-    sum += a[i];
+      sum += a[i];
       dfs(i + 1, sum, n, k);
       sum -= a[i];
     }
