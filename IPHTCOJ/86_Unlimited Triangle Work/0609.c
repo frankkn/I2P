@@ -1,31 +1,34 @@
 #include <stdio.h>
+#include <string.h>
+#define ll long long
 
-int F[(int)1e5] = {0}; // F[i]: number of (x+y==i)
+int F[(int)1e6] = {0}; // Increase the size of F to accommodate large values of D
 
-int main(){
-    int T; scanf("%d", &T);
-    while(T--){
+int main() {
+    int T;
+    scanf("%d", &T);
+    while (T--) {
         memset(F, 0, sizeof(F));
-        int A, B, C, D; scanf("%d%d%d%d", &A, &B, &C, &D);
-        for(int x = A; x <= B; ++x){
-            F[x+A]++;
-            F[x+B+1]--;
+        int A, B, C, D;
+        scanf("%d%d%d%d", &A, &B, &C, &D);
+        for (int x = A; x <= B; ++x) {
+            F[x + B]++;
+            F[x + C + 1]--;
         }
-        for(int i = A+B; i <= B+C+1; ++i){
-            F[i] += F[i-1];
+        for (int i = A + B; i <= B + C + 1; ++i) {
+            F[i] += F[i - 1];
+            // printf("F[%d]: %d\n", i, F[i]);
         }
-        int ans = 0;
-        // check i > z ( i = A+B ~ B+C )
-        for(int z = B+C; z <= C+D; ++z){
-            for(int i = A+B; i <= B+C; ++i){
-                if(i > z){
-                    ans += F[i];
-                }
+        ll ans = 0;
+        // check i > z ( i = A+B ~ B+C+1 )
+        ll mul = 1;
+        for (int i = A + B; i <= B + C; ++i) { // Update loop condition
+            if (i > C) {
+                ans += (F[i] * mul);
+                mul++;
             }
         }
-    
-        printf("%d\n", ans);
+        printf("%lld\n", ans);
     }
-
     return 0;
 }
