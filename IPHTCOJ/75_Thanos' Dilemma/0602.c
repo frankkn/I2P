@@ -1,83 +1,84 @@
 #include <stdio.h>
-#include <string.h>
 #define ll long long
-#define MOD ((ll)1e9+7)
+#define MOD ((int)1e9+7)
 
-typedef struct _Matrix
-{
-  ll mat[3][3];
-} Matrix;
+typedef struct _Matrix{
+    ll mat[2][2];
+}Matrix;
 
-Matrix matrix_mul(Matrix L, Matrix R){
-  // retrun L * R
-  Matrix res;
-  memset(res.mat, 0, sizeof(res.mat));
-  for(int i = 0; i < 3; ++i) for(int j = 0; j < 3; ++j) for(int k = 0; k < 3; ++k){
-    (res.mat[i][k] += (L.mat[i][j] * R.mat[j][k] % MOD) % MOD);
-  }
-  return res;
+// memset !!!!!
+Matrix matrix_mul(Matrix A, Matrix B){
+    Matrix C;
+    memset(C.mat, 0, sizeof(C.mat));
+    for(int i = 0; i < 2; ++i){
+        for(int j = 0; j < 2; ++j){
+            for(int k = 0; k < 2; ++k){
+                (C.mat[i][k] += (A.mat[i][j] * B.mat[j][k] % MOD)) % MOD;
+            }
+        }
+    }
+    return C;
 }
 
+// memset !!!!!
 Matrix Identity(){
-  Matrix res;
-  memset(res.mat, 0, sizeof(res.mat));
-  for(int i = 0; i < 3; ++i){
-    for(int j = 0; j < 3; ++j){
-      if(i == j){
-        res.mat[i][j] = 1;
-      }
+    Matrix I;
+    memset(I.mat, 0, sizeof(I.mat));
+    int values[2][2] = {{1,0},{0,1}};
+    for(int i = 0; i < 2; ++i){
+    	for(int j = 0; j < 2; ++j){
+        	I.mat[i][j] = values[i][j];
+        }
     }
-  }
-  return res;
+    return I;
 }
 
-
-Matrix fast_power(Matrix x, ll y){
-  if(y == 0) return Identity();
-  Matrix tmp = fast_power(x, y/2);
-  if(y % 2 == 1) return matrix_mul(matrix_mul(tmp,tmp), x);
-  else return matrix_mul(tmp,tmp);
-}
-
+// pass x !!!!!
 Matrix init_x(Matrix x){
-  int values[3][3] = {{0, 1, 0}, {0, 0, 1}, {1, 2, 1}};
-  for (int i = 0; i < 3; i++) {
-    for (int j = 0; j < 3; j++) {
-      x.mat[i][j] = values[i][j];
+    int values[2][2] = {{0,1},{1,1}};
+    for(int i = 0; i < 2; ++i){
+    	for(int j = 0; j < 2; ++j){
+        	x.mat[i][j] = values[i][j];
+        }
     }
-  }
-  return x;
+    return x;
 }
 
-Matrix init_P(Matrix P){
-  int values[3][3] = {{1, 0, 0}, {12, 0, 0}, {13, 0, 0}};
-  for (int i = 0; i < 3; i++) {
-    for (int j = 0; j < 3; j++) {
-      P.mat[i][j] = values[i][j];
+// pass p !!!!!
+Matrix init_p(Matrix p){
+    int values[2][2] = {{1,0},{1,0}};
+    for(int i = 0; i < 2; ++i){
+    	for(int j = 0; j < 2; ++j){
+        	p.mat[i][j] = values[i][j];
+        }
     }
-  }
-  return P;
+    return p;
 }
 
-int P(ll i){
-  if(i == 1) return 1;
-  else if(i == 2) return 12;
-  else if(i == 3) return 13;
-  else{
-    Matrix x, res, P, ans;
-    x = init_x(x);
-    res = fast_power(x, i-3);
-    P = init_P(P);
-    ans = matrix_mul(res, P);
-    return ans.mat[2][0] % MOD;
-  }
+Matrix fsp(Matrix x, ll y){
+    if(y == 0) return Identity();
+    Matrix tmp = fsp(x, y/2);
+    if(y % 2 == 1) return matrix_mul(matrix_mul(tmp,tmp), x);
+    else return matrix_mul(tmp,tmp);
+}
+
+int F(ll i){
+    if(i == 1) return 1;
+    else if(i == 2) return 1;
+    else{
+        Matrix x, p, res;
+        x = init_x(x);
+        p = init_p(p);
+        res = matrix_mul(fsp(x, i-2), p);
+        return res.mat[1][0] % MOD;
+    }
 }
 
 int main(){
-  int t; scanf("%d", &t);
-  while(t--){
-    ll i; scanf("%lld", &i);
-    printf("%d\n", P(i));
-  }
-  return 0;
+    ll i;
+    while( scanf("%lld", &i) != EOF){
+        printf("%d\n", F(i));
+    }
+
+    return 0;
 }

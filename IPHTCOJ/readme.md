@@ -22,6 +22,7 @@ Home page: [IPHTCOJ](http://140.114.85.195/)
 |9           |69, 47, 71   |binary_search/greedy/memory          |
 |10          |49, 35, 147  |dfs/qsort+strcmp/qsort+struct        |
 |11          |34, 45, 75   |qsort+strlen/binary_search/fast_power|
+|12          |86, 39, 73   |prefix_sum/qsort+struct_cmp/fsp      |           
 
 ## Fun Problems
 
