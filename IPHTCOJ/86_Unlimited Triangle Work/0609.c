@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #define ll long long
+#define min(a,b) ((a)<(b)?(a):(b))
 
 int F[(int)1e6] = {0};
 
@@ -21,11 +22,9 @@ int main() {
         }
         ll ans = 0;
         // check i > z ( i = A+B ~ B+C)
-        ll mul = 1;
         for (int i = A + B; i <= B + C; ++i) {
             if (i > C) {
-                ans += F[i] * mul;
-                mul++;
+                ans += F[i] * min(i-C, D-C+1); // F[i] * z有幾種可能
             }
         }
         printf("%lld\n", ans);
