@@ -2,7 +2,7 @@
 #include <string.h>
 #define ll long long
 
-int F[(int)1e6] = {0}; // Increase the size of F to accommodate large values of D
+int F[(int)1e6] = {0};
 
 int main() {
     int T;
@@ -17,14 +17,14 @@ int main() {
         }
         for (int i = A + B; i <= B + C + 1; ++i) {
             F[i] += F[i - 1];
-            // printf("F[%d]: %d\n", i, F[i]);
+            //printf("F[%d]: %d\n", i, F[i]);
         }
         ll ans = 0;
-        // check i > z ( i = A+B ~ B+C+1 )
+        // check i > z ( i = A+B ~ B+C)
         ll mul = 1;
-        for (int i = A + B; i <= B + C; ++i) { // Update loop condition
+        for (int i = A + B; i <= B + C; ++i) {
             if (i > C) {
-                ans += (F[i] * mul);
+                ans += F[i] * mul;
                 mul++;
             }
         }
