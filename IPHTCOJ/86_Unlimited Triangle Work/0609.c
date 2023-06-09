@@ -27,6 +27,11 @@ int main() {
                 ans += F[i] * min(i-C, D-C+1); // F[i] * z有幾種可能
             }
         }
+        /* check i > z ( i = A+B ~ B+C)
+        for (int i = C + 1; i <= B + C; ++i) {
+            ans += F[i] * min(i-C, D-C+1); // F[i] * z有幾種可能
+        }
+        */
         printf("%lld\n", ans);
     }
     return 0;
