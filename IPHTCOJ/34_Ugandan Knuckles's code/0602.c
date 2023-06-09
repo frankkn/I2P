@@ -15,7 +15,7 @@ int main(){
   }
   qsort(str, n, sizeof(str[0]), cmp);
   for(int i = 0; i < n-1; ++i){
-    if(!strstr(str[i+1], str[i])){
+    if(!strstr(str[i+1], str[i])){ // strstr(a, b): check if b in a ?
       printf("NO\n");
       return 0;
     }
