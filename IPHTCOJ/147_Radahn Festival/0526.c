@@ -26,8 +26,8 @@ int main(){
     double L = segs[0].L, R = segs[0].R;
     double tot = 0;
     for(int i = 1; i < q; ++i){
-      if(segs[i].L <= R){
-        if(segs[i].R > R){
+      if(segs[i].L <= R){ // 先判斷有沒有overlap
+        if(segs[i].R > R){ // 再判斷有沒有辦法更新R
           R = segs[i].R;
         }
       }else{

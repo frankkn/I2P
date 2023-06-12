@@ -24,7 +24,7 @@ void dfs(int p)
   cnt++;
 	for(int i = 0; i < n; ++i){
     if(visited[i])	continue;
-      if(isNeighbor(p, i) == 0) continue;	
+    if(isNeighbor(p, i) == 0) continue;	
     dfs(i);
   }
 }
@@ -37,7 +37,7 @@ int main(){
   int g1 = 0, g2 = 0;
   for(int i = 0; i < n; ++i){
     if(!visited[i]){
-    cnt = 0;
+      cnt = 0;
       dfs(i);
       if(cnt == 1) g1++;
       else g2++;

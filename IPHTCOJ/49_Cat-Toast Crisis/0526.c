@@ -22,9 +22,9 @@ int dfs(int p)
   int res = 1;
 	for(int i = 0; i < n; ++i){
     if(visited[i])	continue;
-      if(isNeighbor(p, i) == 0) continue;	
-    res += dfs(i);
-    }
+    if(isNeighbor(p, i) == 0) continue;	
+      res += dfs(i);
+  }
 	return res;
 }
 
