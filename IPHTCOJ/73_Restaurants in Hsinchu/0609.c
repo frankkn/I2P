@@ -3,15 +3,16 @@
 #define MOD ((int)1e9+7)
 
 typedef struct _Matrix{
-    int mat[2][2];
+    ll mat[2][2];
 }Matrix;
 
 Matrix matrix_mul(Matrix A, Matrix B){
     Matrix C;
+    memset(C.mat, 0, sizeof(C.mat));
     for(int i = 0; i < 2; ++i){
         for(int j = 0; j < 2; ++j){
             for(int k = 0; k < 2; ++k){
-                C[i][k] = A[i][j]*B[j][k];
+                (C.mat[i][k] += (A.mat[i][j] * B.mat[j][k] % MOD)) % MOD;
             }
         }
     }
@@ -20,12 +21,38 @@ Matrix matrix_mul(Matrix A, Matrix B){
 
 Matrix Identity(){
     Matrix I;
-    I.mat = {{1,0},{0,1}};
+    memset(I.mat, 0, sizeof(I.mat));
+    int values[2][2] = {{1,0},{0,1}};
+    for(int i = 0; i < 2; ++i){
+    	for(int j = 0; j < 2; ++j){
+        	I.mat[i][j] = values[i][j];
+        }
+    }
     return I;
 }
 
-Matrix fsp(Matrix x, int y){
-    if(y == 1) return Identity();
+Matrix init_x(Matrix x){
+    int values[2][2] = {{0,1},{1,1}};
+    for(int i = 0; i < 2; ++i){
+    	for(int j = 0; j < 2; ++j){
+        	x.mat[i][j] = values[i][j];
+        }
+    }
+    return x;
+}
+
+Matrix init_p(Matrix p){
+    int values[2][2] = {{1,0},{1,0}};
+    for(int i = 0; i < 2; ++i){
+    	for(int j = 0; j < 2; ++j){
+        	p.mat[i][j] = values[i][j];
+        }
+    }
+    return p;
+}
+
+Matrix fsp(Matrix x, ll y){
+    if(y == 0) return Identity();
     Matrix tmp = fsp(x, y/2);
     if(y % 2 == 1) return matrix_mul(matrix_mul(tmp,tmp), x);
     else return matrix_mul(tmp,tmp);
@@ -33,20 +60,20 @@ Matrix fsp(Matrix x, int y){
 
 int F(ll i){
     if(i == 1) return 1;
-    else if(i == 2) return 2;
+    else if(i == 2) return 1;
     else{
         Matrix x, p, res;
-        x.mat[2][2] = {{0, 1},{1, 1}};
-        p.mat[2][2] = {{1, 0},{1, 0}};
+        x = init_x(x);
+        p = init_p(p);
         res = matrix_mul(fsp(x, i-2), p);
-        return res.mat[1][0];
+        return res.mat[1][0] % MOD;
     }
 }
 
 int main(){
     ll i;
-    while(scanf("%lld" != EOF)){
-        printf("%d", F(i));
+    while( scanf("%lld", &i) != EOF){
+        printf("%d\n", F(i));
     }
 
     return 0;
